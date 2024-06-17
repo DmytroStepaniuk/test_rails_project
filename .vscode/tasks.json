@@ -1,0 +1,28 @@
+{
+  // Open the root folder in VS Code and use ctrl + shift + b (default shortcut) or
+  // run Tasks: Run Build Tasks
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Mysql: Create databases",
+      "type": "shell",
+      "command": "bundle exec rails version",
+      "group": {
+        "kind": "build"
+      },
+      "options": {
+        "env": {
+          "DEVCONTAINER": "true"
+        }
+      },
+      "detail": "Blalblabla"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "migrationName",
+      "description": "Enter migration name. Use PascalNamingConvention for that. Will create file like timestamp_pascal_namining_convention.",
+      "type": "promptString"
+    },
+  ]
+}
