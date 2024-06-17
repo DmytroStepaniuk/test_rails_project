@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is TEST_RAILS_PROJECT
 
-Things you may want to cover:
+The idea of this project is to have a well-tuned Ruby On Rails project that runs in Devcontainer.
 
-* Ruby version
+Devcontainer is a great place to develop. It allows to not care about different libraries u need to install on ur computer.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The reason why this project appeared - im bored to install ffmpeg, wkhtmltopdf, libvips, ImageMagick, poppler and etc

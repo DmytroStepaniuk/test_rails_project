@@ -4,7 +4,7 @@
   "service": "test_rails_project",
   "workspaceFolder": "/app",
   "shutdownAction": "stopCompose",
-  "postCreateCommand": "bundle -v && gem -v && bundle install && bundle install --binstubs",
+  "postCreateCommand": "bundle -v && gem -v && bundle install",
   "customizations": {
     "vscode": {
       "settings": {
@@ -28,7 +28,8 @@
         "editor.tabSize": 2,
         "editor.cursorSmoothCaretAnimation": "on",
         "files.trimTrailingWhitespace": true,
-        "files.eol": "\n"
+        "files.eol": "\n",
+        "files.insertFinalNewline": true
       },
       "extensions": [
         "eamodio.gitlens",
