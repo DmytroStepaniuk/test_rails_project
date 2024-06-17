@@ -58,8 +58,4 @@ volumes:
     # | +    command: pg_restore -F c -v -c -C -U user
     # | +    environment:
     # | +      PGPASSWORD: password
-    # | +  pg_dump:
-    # | +    service: backoffice
-    # | +    command: pg_dump -F c -v -h postgres -d gopuff_development -U user
-    # | +    environment:
-    # | +      PGPASSWORD: password
+    

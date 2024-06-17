@@ -20,7 +20,23 @@
     {
       "label": "PG: Create dump",
       "type": "shell",
-      "command": "pg_dump -F c -v -h test_rails_project__postgresql -d test_rails_project_development -U user > dump.sql",
+      "command": "pg_dump -F c -v -h test_rails_project__postgresql -d test_rails_project_development -U user > ${input:dump_file_name}",
+      "group": {
+        "kind": "build"
+      },
+      "options": {
+        "env": {
+          "DEVCONTAINER": "true",
+          "PGPASSWORD": "password"
+        }
+      },
+      "detail": "Create DEV db dump."
+    }
+    },
+    {
+      "label": "PG: Restore from dump",
+      "type": "shell",
+      "command": "pg_restore -F c -v -c -C -U user < ${input:dump_file_name}",
       "group": {
         "kind": "build"
       },
@@ -35,8 +51,8 @@
   ],
   "inputs": [
     {
-      "id": "migrationName",
-      "description": "Enter migration name. Use PascalNamingConvention for that. Will create file like timestamp_pascal_namining_convention.",
+      "id": "dump_file_name",
+      "description": "Name of the SQL dump file.",
       "type": "promptString"
     },
   ]
