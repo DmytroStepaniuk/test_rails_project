@@ -1,0 +1,60 @@
+version: '3.9'
+
+services:
+  test_rails_project: &test_rails_project
+    build:
+      context: .
+      dockerfile: Dockerfile.devcontainer
+    stdin_open: true
+    tty: true
+    environment:
+      HISTFILE: /root/hist/.zsh_history # inspired by https://gist.github.com/gido/9b7e323571cf61820bd4baef92e30861
+    volumes:
+      - ../:/app:delegated
+      - ~/.docker:/root/.docker:z # ?
+      - /var/run/docker.sock:/var/run/docker.sock # ?
+      - test_rails_project__gems:/gems
+      - test_rails_project__vscode-extensions:/root/.vscode-server/extensions
+      - ~/.gitconfig:/root/.gitconfig:z
+      - ~/.ssh:/root/.ssh:z
+      - test_rails_project__zsh_history:/root/hist
+  test_rails_project__postgresql:
+    image: postgres:16.3
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "user" ]
+    volumes:
+      - test_rails_project__postgres_volume:/var/lib/postgresql/data
+    tmpfs:
+      - /tmp
+    depends_on:
+      - test_rails_project
+  test_rails_project__solargraph:
+    <<: *test_rails_project
+    ports:
+      - 7658:7658
+    entrypoint: "./bin/solargraph socket --host 0.0.0.0 --port=7658"
+    depends_on:
+      - test_rails_project
+    restart: always
+volumes:
+  test_rails_project__gems:
+  test_rails_project__vscode-extensions:
+  test_rails_project__zsh_history:
+  test_rails_project__postgres_volume:
+
+    # | +  pg_restore:
+    # | +    service: backoffice
+    # | +    command: pg_restore -F c -v -c -C -U user
+    # | +    environment:
+    # | +      PGPASSWORD: password
+    # | +  pg_dump:
+    # | +    service: backoffice
+    # | +    command: pg_dump -F c -v -h postgres -d gopuff_development -U user
+    # | +    environment:
+    # | +      PGPASSWORD: password

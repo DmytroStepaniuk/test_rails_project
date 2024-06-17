@@ -1,0 +1,68 @@
+{
+  "name": "TEST_RAILS_PROJECT",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "test_rails_project",
+  "workspaceFolder": "/app",
+  "shutdownAction": "stopCompose",
+  "postCreateCommand": "bundle -v && gem -v && bundle install && bundle install --binstubs",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "sh",
+        "terminal.integrated.defaultProfile.osx": "zsh",
+        "[ruby]": {
+          // "editor.defaultFormatter": "Shopify.ruby-lsp", // Use the Ruby LSP as the default formatter
+          "editor.formatOnSave": true, // Format files automatically when saving
+          "editor.tabSize": 2, // Use 2 spaces for indentation
+          "editor.insertSpaces": true, // Use spaces and not tabs for indentantion
+          "editor.semanticHighlighting.enabled": true, // Enable semantic highlighting
+          "editor.formatOnType": true // Enable formatting while typing
+        },
+        "solargraph.transport": "external",
+        "solargraph.externalServer": {
+          "host": "test_rails_project__solargraph",
+          "port": 7658
+        },
+        "editor.formatOnSave": true,
+        "editor.renderWhitespace": "all",
+        "editor.tabSize": 2,
+        "editor.cursorSmoothCaretAnimation": "on",
+        "files.trimTrailingWhitespace": true,
+        "files.eol": "\n"
+      },
+      "extensions": [
+        "eamodio.gitlens",
+        "IBM.output-colorizer",
+        "Gruntfuggly.todo-tree",
+        "bierner.emojisense",
+        "stkb.rewrap",
+        "aki77.rails-db-schema",
+        // "shopify.ruby-lsp",
+        // "rebornix.Ruby",
+        "castwide.solargraph",
+        // "aaron-bond.better-comments",
+        // "mikestead.dotenv",
+        // "ms-vscode.atom-keybindings",
+        // "ms-vscode.azure-account",
+        // "andig.sublime-cmd-shift-d",
+        // "ms-azuretools.vscode-docker",
+        // "vincaslt.highlight-matching-tag",
+        // "bung87.rails",
+        // "bung87.vscode-gemfile",
+        // "vayan.haml",
+        // "redhat.vscode-yaml",
+        // "ratismal.erb-types",
+        // "oderwat.indent-rainbow",
+        // "pranaygp.vscode-css-peek",
+        // "codezombiech.gitignore",
+        // "dakara.transformer",
+        // "dbaeumer.vscode-eslint",
+        // "eamodio.gitlens",
+        // "ormulahendry.auto-rename-tag",
+        // "IBM.output-colorizer",
+        "kaiwood.endwise",
+        "vscode-icons-team.vscode-icons"
+      ]
+    }
+  }
+}
