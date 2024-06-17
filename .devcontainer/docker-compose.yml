@@ -9,6 +9,11 @@ services:
     tty: true
     environment:
       HISTFILE: /root/hist/.zsh_history # inspired by https://gist.github.com/gido/9b7e323571cf61820bd4baef92e30861
+      # DATABASE_URL: "postgres://user:password@test_rails_project__postgresql/test_rails_project_development"
+      PG_HOST: test_rails_project__postgresql
+      POSTGRES_USER: user
+      PG_DB: test_rails_project_development
+      POSTGRES_PASSWORD: password
     volumes:
       - ../:/app:delegated
       - ~/.docker:/root/.docker:z # ?
@@ -19,8 +24,8 @@ services:
       - ~/.ssh:/root/.ssh:z
       - test_rails_project__zsh_history:/root/hist
   test_rails_project__postgresql:
-    image: postgres:16.3
-    restart: always
+    image: postgres:15.6
+    restart: unless-stopped
     ports:
       - 5432:5432
     environment:
@@ -41,7 +46,7 @@ services:
     entrypoint: "./bin/solargraph socket --host 0.0.0.0 --port=7658"
     depends_on:
       - test_rails_project
-    restart: always
+    restart: unless-stopped
 volumes:
   test_rails_project__gems:
   test_rails_project__vscode-extensions:

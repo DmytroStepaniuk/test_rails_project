@@ -4,9 +4,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Mysql: Create databases",
+      "label": "PG: Create databases",
       "type": "shell",
-      "command": "bundle exec rails version",
+      "command": "bundle exec rails db:create",
       "group": {
         "kind": "build"
       },
@@ -15,7 +15,22 @@
           "DEVCONTAINER": "true"
         }
       },
-      "detail": "Blalblabla"
+      "detail": "Create DEV and test databases if not exists yet."
+    },
+    {
+      "label": "PG: Create dump",
+      "type": "shell",
+      "command": "pg_dump -F c -v -h test_rails_project__postgresql -d test_rails_project_development -U user > dump.sql",
+      "group": {
+        "kind": "build"
+      },
+      "options": {
+        "env": {
+          "DEVCONTAINER": "true",
+          "PGPASSWORD": "password"
+        }
+      },
+      "detail": "Create DEV db dump."
     }
   ],
   "inputs": [
