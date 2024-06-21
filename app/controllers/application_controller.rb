@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
-  def index
+  protect_from_forgery with: :exception
+
+  def show
   end
 end

@@ -31,7 +31,21 @@
         }
       },
       "detail": "Create DEV db dump."
-    }
+    },
+    {
+      "label": "PSQL: connect DEV DB",
+      "type": "shell",
+      "command": "psql -h test_rails_project__postgresql -d test_rails_project_development -U user",
+      "group": {
+        "kind": "build"
+      },
+      "options": {
+        "env": {
+          "DEVCONTAINER": "true",
+          "PGPASSWORD": "password"
+        }
+      },
+      "detail": "Create DEV db dump."
     },
     {
       "label": "PG: Restore from dump",
