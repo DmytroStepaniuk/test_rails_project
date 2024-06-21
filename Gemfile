@@ -63,3 +63,7 @@ group :development do
   gem "solargraph", "~> 0.50.0"
   gem "solargraph-rails", "~> 1.1"
 end
+
+group :test do
+  gem 'shoulda-matchers'
+end
