@@ -23,6 +23,13 @@
           "host": "test_rails_project__solargraph",
           "port": 7658
         },
+        "[erb]": {
+          "editor.defaultFormatter": "aliariff.vscode-erb-beautify",
+          "editor.formatOnSave": true
+        },
+        "files.associations": {
+          "*.html.erb": "erb"
+        },
         "editor.formatOnSave": true,
         "editor.renderWhitespace": "all",
         "editor.tabSize": 2,
@@ -38,6 +45,7 @@
         "bierner.emojisense",
         "stkb.rewrap",
         "aki77.rails-db-schema",
+        "aliariff.vscode-erb-beautify",
         // "shopify.ruby-lsp",
         // "rebornix.Ruby",
         "castwide.solargraph",

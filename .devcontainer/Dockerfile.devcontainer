@@ -41,7 +41,7 @@ RUN gem update
 
 RUN gem install \
   rails \
-  rdbg
+  htmlbeautifier
 
 COPY .. .
 
