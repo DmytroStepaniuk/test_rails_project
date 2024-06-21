@@ -11,4 +11,10 @@ Rails.application.routes.draw do
   namespace :api do
     resource :ping, only: :show
   end
+
+  get '/web', to: 'web/homes#show'
+
+  namespace :web do
+    resource :home
+  end
 end
