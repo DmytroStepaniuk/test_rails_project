@@ -1,2 +1,2 @@
-class Web::HomesController < ApplicationController
+class Web::HomesController < Web::BaseController
 end

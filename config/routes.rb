@@ -16,5 +16,7 @@ Rails.application.routes.draw do
 
   namespace :web do
     resource :home
+
+    resource :signup, only: [:create, :show]
   end
 end

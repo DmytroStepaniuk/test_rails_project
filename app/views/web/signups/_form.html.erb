@@ -1,0 +1,17 @@
+<%= form_for resource, url: '/web/signup', method: :post do |f| %>
+  <%= f.label :email, "Email:" %>
+  <%= f.email_field :email, value: resource.email %>
+  <hr>
+  <%= f.label :password, "Password:" %>
+  <%= f.password_field :password %>
+  <i>Min 6 characters</i>
+  <br>
+  <%= f.submit %>
+<% end %>
+<% unless resource.errors.empty? %>
+  asd
+  <% binding.break %>
+  <% resource.errors.full_messages.each do |error_message| %>
+    <h3><%= error_message %></h3>
+  <% end %>
+<% end %>
